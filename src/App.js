@@ -1,29 +1,36 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-// クラスコンポーネント
-class App extends Component {
-  render() {
-    return (
-      <React.Fragment>
-        <label htmlFor="log">Log</label>
-        <input type="text" name="log" onChange={() => { console.log("Changed!") }} />
-      </React.Fragment>
-    )
-  }
+const App = () => {
+
+  const profiles = [
+    { name: "Kento", age: 23 },
+    { name: "Chikuwa", age: 1 },
+    { name: "Oden" },
+    { age: "31" },
+  ]
+
+  return (
+    <div>
+      {
+        profiles.map((profile, index) => {
+          return <User name={profile.name} age={profile.age} key={index} />
+        })
+      }
+    </div>
+  )
+}
+const User = (props) => {
+  return (
+    <div>
+      <h1>Hi! {props.name}</h1>
+      <p>{props.age} years old.</p>
+    </div>
+  )
 }
 
-// 関数コンポーネント
-// const App = () => {
-//   return (
-//     <div>
-//       <Cat />
-//       <Cat />
-//       <Cat />
-//     </div>
-//   )
-// }
-// const Cat = () => {
-//   return <div>Meow!!</div>
-// }
+User.defaultProps = {
+  name: 'unknown',
+  age: 0
+}
 
 export default App;
