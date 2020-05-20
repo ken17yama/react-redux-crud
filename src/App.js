@@ -1,7 +1,12 @@
 import React from 'react';
 
 function App() {
-  return <h1>Hello world!</h1>;
+  return (
+    <React.Fragment>
+      <label htmlFor="log">Log</label>
+      <input type="text" name="log" onChange={() => { console.log("Changed!") }} />
+    </React.Fragment>
+  );
 }
 
 export default App;
