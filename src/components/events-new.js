@@ -13,7 +13,6 @@ class EventsNew extends Component {
 
   renderField(field) {
     const { input, label, type, meta: { touched, error } } = field
-
     return (
       <div>
         <input {...input} placeholder={label} type={type} />
@@ -28,14 +27,14 @@ class EventsNew extends Component {
   }
 
   render() {
-    const { handleSubmit } = this.props
+    const { handleSubmit, pristine, submitting } = this.props
 
     return (
       <React.Fragment>
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <Field label='Title' name="title" type="text" component={this.renderField} />
           <Field label='Body' name="body" type="text" component={this.renderField} />
-          <input type="submit" value="submit" disabled={false} />
+          <input type="submit" value="submit" disabled={pristine || submitting} />
           <Link to='/'>Cansel</Link>
         </form>
       </React.Fragment >
